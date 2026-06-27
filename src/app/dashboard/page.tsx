@@ -3,8 +3,7 @@ import { createClient } from '@/lib/supabase/server'
 import { calcTotalScore, calcWeekScore, getWeekKey } from '@/lib/points'
 import Nav from '@/components/ui/Nav'
 import Scoreboard from '@/components/scoreboard/Scoreboard'
-import dynamic from 'next/dynamic'
-const DashboardClient = dynamic(() => import('./DashboardClient'))
+import DashboardClient from '@/components/checkin/DashboardClient'
 
 export default async function DashboardPage() {
   const supabase = await createClient()
