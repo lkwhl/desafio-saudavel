@@ -11,7 +11,7 @@ interface Props {
   today: string
   initial: DailyCheckin | null
   exerciseCount: number
-  onExerciseToggle: (added: boolean) => void
+  onExerciseToggle: (added: boolean, newId?: string) => void
   todayExerciseId: string | null
 }
 
@@ -93,7 +93,7 @@ export default function CheckinForm({ userId, today, initial, exerciseCount, onE
       } else {
         const { data } = await supabase.from('exercise_logs').insert({ user_id: userId, date: today }).select().single()
         await writeAudit({ supabase, user_id: userId, date: today, action: 'exercise_add' })
-        onExerciseToggle(true)
+        onExerciseToggle(true, data?.id)
       }
     })
   }
@@ -252,8 +252,8 @@ export default function CheckinForm({ userId, today, initial, exerciseCount, onE
             {exerciseCount}/4 na semana · meta: 4x
           </p>
         </div>
-        <span style={{ fontSize: '12px', color: 'var(--blue)', fontWeight: '600' }}>
-          {exerciseCount >= 4 ? '20pts ✓' : exerciseCount === 3 ? '10pts' : exerciseCount === 2 ? '5pts' : exerciseCount === 1 ? '2pts' : '-'}
+        <span style={{ fontSize: '12px', color: exerciseCount >= 4 ? 'var(--green)' : 'var(--text-muted)', fontWeight: '600' }}>
+          {exerciseCount >= 4 ? '+20pts ✓' : 'meta: 4x'}
         </span>
         <span style={{
           width: '22px', height: '22px',

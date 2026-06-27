@@ -63,7 +63,7 @@ export default async function DashboardPage() {
             Olá, {myProfile?.display_name ?? 'você'} 👋
           </h1>
           <p style={{ fontSize: '13px', color: 'var(--text-muted)', marginTop: '2px' }}>
-            {today === '2025-07-01' ? '🚀 Primeiro dia do desafio!' : `Dia ${getDayNumber(today)} de 47`}
+            {today === '2026-07-01' ? '🚀 Primeiro dia do desafio!' : `Dia ${getDayNumber(today)} de 47`}
           </p>
         </div>
 
@@ -110,7 +110,7 @@ export default async function DashboardPage() {
 }
 
 function getDayNumber(today: string): number {
-  const start = new Date('2025-07-01')
+  const start = new Date('2026-07-01')
   const d = new Date(today + 'T12:00:00')
   return Math.floor((d.getTime() - start.getTime()) / 86400000) + 1
 }

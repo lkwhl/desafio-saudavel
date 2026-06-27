@@ -16,10 +16,9 @@ export default function DashboardClient({ userId, today, initialCheckin, weekExe
   const [exCount, setExCount] = useState(weekExerciseCount)
   const [exId, setExId] = useState<string | null>(todayExerciseId)
 
-  function handleExerciseToggle(added: boolean) {
+  function handleExerciseToggle(added: boolean, newId?: string) {
     setExCount(c => added ? c + 1 : c - 1)
-    if (!added) setExId(null)
-    // If added, page will re-render on next visit; for now just count is enough
+    setExId(added ? (newId ?? null) : null)
   }
 
   return (

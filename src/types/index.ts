@@ -48,8 +48,8 @@ export interface DayScore {
   is_perfect: boolean
 }
 
-export const CHALLENGE_START = '2025-07-01'
-export const CHALLENGE_END = '2025-08-16'
+export const CHALLENGE_START = '2026-07-01'
+export const CHALLENGE_END = '2026-08-16'
 
 export const USERS: Record<string, string> = {
   // populated from env

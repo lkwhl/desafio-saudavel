@@ -32,11 +32,7 @@ export function isPerfectDay(checkin: DailyCheckin): boolean {
 }
 
 export function calcExercisePoints(weekCount: number): number {
-  if (weekCount >= 4) return 20
-  if (weekCount === 3) return 10
-  if (weekCount === 2) return 5
-  if (weekCount === 1) return 2
-  return 0
+  return weekCount >= 4 ? 20 : 0
 }
 
 export function calcStreakBonus(streakDays: number): number {
